@@ -1,6 +1,7 @@
 excerpt_separator: ""
 pygments: true
 markdown: kramdown
+highlighter: rouge
 url: http://damrem.github.io
 title: damrem
 tagline: Dev blog
