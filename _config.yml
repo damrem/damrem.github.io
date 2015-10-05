@@ -3,6 +3,6 @@ pygments: true
 markdown: kramdown
 url: http://damrem.github.io
 title: damrem
-tagline: A log of everyday life
-description: My awesome new site
+tagline: Dev blog
+description: Dev blog
 paginate: 5
