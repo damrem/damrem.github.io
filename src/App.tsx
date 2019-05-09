@@ -8,10 +8,16 @@ const App: React.FC = () => {
   const [md,setMd]=useState('');
 
   useAsyncEffect(async ()=>{
-    const fetched=await fetch('./public/content/test.md');
-    console.log(fetched);
-    setMd(fetched.toString());
-  }, []);
+    const {body}=await fetch('./content/test.md');
+    if(body){
+      const reader=body.getReader();
+      const {value}=await reader.read();
+      const codes:number[]=Array.from(value);
+      const chars=codes.map((v:number)=>String.fromCharCode(v));
+      const html=chars.join('');
+      setMd(html);
+    }
+  });
 
   return (
     <div className="App">
