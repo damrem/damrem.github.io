@@ -1,27 +1,12 @@
-import React, { useState } from 'react';
-import Markdown from 'react-markdown';
+import React from 'react';
+import LoadedMarkdown from './LoadedMarkdown';
 import logo from './logo.svg';
 import './App.css';
-import {useAsyncEffect} from './useAsyncEffect';
 
 const App: React.FC = () => {
-  const [md,setMd]=useState('');
-
-  useAsyncEffect(async ()=>{
-    const {body}=await fetch('./content/test.md');
-    if(body){
-      const reader=body.getReader();
-      const {value}=await reader.read();
-      const codes:number[]=Array.from(value);
-      const chars=codes.map((v:number)=>String.fromCharCode(v));
-      const html=chars.join('');
-      setMd(html);
-    }
-  });
-
   return (
     <div className="App">
-      <Markdown source={md.toString()||'# null'}/>
+      <LoadedMarkdown path="./content/test.md"/>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
